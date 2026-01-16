@@ -1,4 +1,4 @@
-import { Schema, model, Types,Document } from "mongoose";
+import { Schema, model, Types, Document } from "mongoose";
 
 export type UserRole = "admin" | "teacher" | "student";
 
@@ -6,6 +6,7 @@ export interface IUser extends Document {
   username: string;
   password: string;
   role: UserRole;
+  refreshToken?: string
 }
 
 const userSchema = new Schema<IUser>(
@@ -26,6 +27,11 @@ const userSchema = new Schema<IUser>(
       type: String,
       enum: ["admin", "teacher", "student"],
       required: true,
+    },
+
+    refreshToken: {
+      type: String,
+      default: null,
     },
   },
   { timestamps: true }

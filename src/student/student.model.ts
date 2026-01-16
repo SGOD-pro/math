@@ -23,12 +23,11 @@ const studentSchema = new Schema<IStudent>(
             trim: true,
         },
 
-        curriculumIds: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Curriculum",
-            },
-        ],
+        curriculumIds: [{
+            type: Schema.Types.ObjectId,
+            ref: "curriculums",
+        },],
+
     },
     { timestamps: true }
 );
